@@ -12,6 +12,7 @@
 	}
 </script>
 
+
 <div class="container mx-auto px-6 py-12">
 	<div class="max-w-5xl mx-auto bg-white shadow rounded-lg overflow-hidden">
 		<div class="grid grid-cols-1 md:grid-cols-2">
