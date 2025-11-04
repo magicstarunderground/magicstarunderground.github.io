@@ -1,36 +1,30 @@
 <script lang="ts">
+
   let open = false;
+  let workOpen = true; // show examples by default when menu opens
 </script>
 
 <div id="top" class="min-h-screen flex flex-col">
-  <!-- 0 - Gradient bar -->
-  <div class="h-[5px] bg-gradient-to-r from-emerald-500 to-yellow-400"></div>
-
-  <!-- 1 - Navbar -->
-  <nav class="flex items-center justify-between px-6 py-4">
-    <div class="flex items-center space-x-3">
-      <!-- simple logo -->
-      <div class="w-10 h-10 bg-black rounded-sm flex items-center justify-center text-white font-bold">AP</div>
-      <span class="font-semibold">Alma Perissinotti</span>
-    </div>
-
-    <div class="hidden md:flex items-center space-x-4">
-      <a href="#" class="text-sm">Work</a>
-      <a href="/contact" class="text-sm">Contact</a>
-    </div>
-
-    <!-- burger menu -->
-    <button class="md:hidden p-2" on:click={() => (open = !open)} aria-label="menu">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-gray-800">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-  </nav>
 
   <!-- mobile menu -->
   {#if open}
-    <div class="md:hidden px-6 pb-4 space-y-2">
-      <a href="#" class="block">Work</a>
+    <div class="md:hidden px-6 pb-4 space-y-2 relative z-20">
+      <div>
+        <button class="w-full text-left flex items-center justify-between py-2" on:click={() => (workOpen = !workOpen)} aria-expanded={workOpen}>
+          <span class="font-medium">Work</span>
+          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+        </button>
+
+        {#if workOpen}
+          <ul class="mt-2 pl-4 space-y-1">
+            <li><a href="#arte-terapia" class="block text-sm text-gray-700">Arte terapia (landing)</a></li>
+            <li><a href="#workshop-pittura" class="block text-sm text-gray-700">Workshop: Pittura ad olio</a></li>
+            <li><a href="#workshop-collage" class="block text-sm text-gray-700">Workshop: Collage terapeutico</a></li>
+            <li><a href="#portfolio" class="block text-sm text-gray-700">Portfolio / Mostre</a></li>
+          </ul>
+        {/if}
+      </div>
+
       <a href="/contact" class="block">Contact</a>
     </div>
   {/if}
